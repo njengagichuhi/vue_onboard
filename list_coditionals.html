@@ -1,0 +1,76 @@
+<!DOCTYPE html >
+<html lang="en"class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3">  </script>
+</head>
+<body class="h-full grid place-items-center">
+    <div id="app">
+        <section v-show="inprogressAssignments.length">
+            <h2 class="font-bold mb-4">In progress</h2>
+            <ul>
+                <li v-for="assignment in inprogressAssignments"
+                    :key="assignment.id"
+                >
+                    <label >
+                        {{assignment.name}}
+                        <input type="checkbox" v-model="assignment.complete ">
+                    </label>
+                </li>
+            </ul>
+            <!--<pre>
+                {{assignments}}
+            </pre>//-->
+        </section>
+        <!--<section class="mt-4"v-show="assignments.filter(a=>a.complete).length">-->
+            <section class="mt-4"v-show="completedAssignments.length">
+            <h2 class="font-bold mb-4">Completed </h2>
+            <ul>
+                <!--<li v-for="assignment in assignments.filter(a=>a.complete)"-->
+                    <li v-for="assignment in completedAssignments"
+                    :key="assignment.id"
+                >
+                    <label >
+                        {{assignment.name}}
+                        <input type="checkbox" v-model="assignment.complete ">
+                    </label>
+                </li>
+            </ul>
+            <!--<pre>
+                {{assignments}}
+            </pre>//-->
+        </section>
+    </div>
+    <script>
+        
+        let app={
+            data(){
+                return {
+                    assignments:[
+                    {name:'finish project',complete:false ,id:1},
+                    {name:'read chapter 4',complete:false,id:2},
+                    {name:'Turn in Homework',complete:false,id:3},
+                    
+                    ]
+                }
+
+            },
+            computed:{ 
+                inprogressAssignments(){
+                    return this.assignments.filter(assignment=>! assignment.complete)
+                },
+                completedAssignments(){
+                    return this.assignments.filter(assignment=>assignment.complete)
+                },
+              
+            }
+        };
+        Vue.createApp(app).mount('#app')
+
+        
+    </script>
+</body>
+</html>
