@@ -23,10 +23,13 @@
             
                 
             },
-            data:{
-                processing: true
+            data(){
+                return{
+                    processing: true
+                };
+                
             }
-            }
+            },
         };
         Vue.createApp(app).mount('#app');
     </script>
