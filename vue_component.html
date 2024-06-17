@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/vue@3">  </script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
     <title>Document</title>
-</head>
-<body class="h-full grid place-items-center">
+  </head>
+  <body class="h-full grid place-items-center">
     <div id="app">
       <app_button>submit</app_button>
-
     </div>
-    <script>
-        let app={
-            components:{
-            'app_button':{
-            template: '<button class="bg-gray-200 hover:bg-gray-600 border roundrd px-5 py-2 disabled:cursor-not-allowed" :disabled="processing"> <slot/></button>'
-
-            
-                
-            },
-            data(){
-                return{
-                    processing: true
-                };
-                
-            }
-            },
+    <script type="module" >
+        import app_button from "./js/components/appbutton.js"
+      let app = {
+        components: {
+          'app_button': app_button
+          },
         };
-        Vue.createApp(app).mount('#app');
+      
+      Vue.createApp(app).mount("#app");
     </script>
-    
-</body>
+  </body>
 </html>
